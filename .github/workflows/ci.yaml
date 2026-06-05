@@ -1,0 +1,24 @@
+name: Integracion Continua
+on:
+  pull_request:
+    branches: #Rama a la que vamos a llegar.
+      - main
+      - develop
+      - trunk
+      - xxx
+jobs:
+  build:
+    runs-on: ubuntu-latest #Blacksmith TODO revisar.
+    steps:
+      - name: Descargando el repo para hacer CI
+        uses: actions/checkout@v6
+      - name: Instalar Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin' # See 'Supported distributions' for available options
+          java-version: '21'
+      - name: Instalar Gradle
+        uses: gradle/actions/setup-gradle@v6
+      - name: Compilar con gradle
+        run: ./gradlew build
+      #- Instalar dependencias
