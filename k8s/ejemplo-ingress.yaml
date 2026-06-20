@@ -7,8 +7,9 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    paths:
-      - path: /lavaca(/|$)(.*)
+    - http:
+        paths:
+          - path: /lavaca(/|$)(.*)
         pathType: ImplementationSpecific
         service:
           name: ejemplo
