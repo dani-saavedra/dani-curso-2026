@@ -14,6 +14,5 @@ public class Pago {
 
         //Notificacion notificacion = new Notificacion();
         notificacion.enviarNotificacion(producto, celular);
-
     }
 }

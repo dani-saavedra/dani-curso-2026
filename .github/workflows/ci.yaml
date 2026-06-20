@@ -21,4 +21,3 @@ jobs:
         uses: gradle/actions/setup-gradle@v6
       - name: Compilar con gradle
         run: ./gradlew build
-      #- Instalar dependencias

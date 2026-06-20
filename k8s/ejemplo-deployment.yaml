@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ejemplo
+  labels:
+    app: ejemplo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ejemplo
+  template:
+    metadata:
+      labels:
+        app: ejemplo
+    spec:
+      containers:
+      - name: ejemplito
+        image: danielsabana/vaca:1.5.0
+        ports:
+        - containerPort: 8081
+        resources:
+          requests:
+            cpu: 200m
+            memory: 500Mi
+        startupProbe:
+          httpGet:
+            path: /nuevo-saludo
+            port: 8081
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
